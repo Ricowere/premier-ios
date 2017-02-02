@@ -9,7 +9,9 @@
 import UIKit
 
 final class MoviewViewCell: UITableViewCell, ListItemUI {
-
+	@IBOutlet weak var movieTitleLabel: UILabel?
+	@IBOutlet weak var movieOverviewLabel: UILabel?
+	@IBOutlet weak var movieImageLogo: UIImageView?
 }
 
 extension MoviewViewCell {
@@ -17,6 +19,7 @@ extension MoviewViewCell {
 	func set(title: String?) {}
 	
 	func set(with movie: MoviePresentation) {
-		
+		movieTitleLabel?.text = movie.title
+		movieOverviewLabel?.text = movie.overview
 	}
 }

@@ -9,6 +9,9 @@ class MoviesViewController: UIViewController, MoviesUI {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+		tableView?.rowHeight = UITableViewAutomaticDimension
+		tableView?.estimatedRowHeight = 80
+		
 		presenter.attachView(self)
     }
 }
