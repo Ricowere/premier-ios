@@ -19,8 +19,10 @@ extension MoviewViewCell {
 	func set(title: String?) {}
 	
 	func set(with movie: MoviePresentation) {
-		movieTitleLabel?.text = movie.title
-		movieOverviewLabel?.text = movie.overview
+		movieTitleLabel?.attributedText = NSAttributedString(string: movie.title,
+		                                                     attributes: NSAttributedString.titleAttributes)
+		movieOverviewLabel?.attributedText = NSAttributedString(string: movie.overview,
+		                                                        attributes: NSAttributedString.bodyAttributes)
 		
 		let dispatchImageWork = DispatchWorkItem {
 			do {
