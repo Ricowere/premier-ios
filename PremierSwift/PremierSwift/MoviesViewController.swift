@@ -11,6 +11,7 @@ class MoviesViewController: UIViewController, MoviesUI {
 
 		tableView?.rowHeight = UITableViewAutomaticDimension
 		tableView?.estimatedRowHeight = 80
+		tableView?.allowsSelection = false
 		
 		presenter.attachView(self)
     }

@@ -34,7 +34,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yxw-iM-AUi">
-                                                    <rect key="frame" x="31" y="25" width="92" height="142"/>
+                                                    <rect key="frame" x="22" y="25" width="92" height="142"/>
                                                     <color key="backgroundColor" red="0.7843137255" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="92" id="3io-v2-nMV"/>
@@ -42,13 +42,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHZ-Ce-fnO">
-                                                    <rect key="frame" x="141" y="25" width="202" height="21"/>
+                                                    <rect key="frame" x="132" y="25" width="221" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCM-4S-MiL">
-                                                    <rect key="frame" x="31" y="185" width="312" height="78.5"/>
+                                                    <rect key="frame" x="22" y="185" width="331" height="78.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -57,13 +57,13 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="TCM-4S-MiL" secondAttribute="bottom" constant="32" id="5TF-P5-hqs"/>
                                                 <constraint firstItem="VHZ-Ce-fnO" firstAttribute="top" secondItem="yxw-iM-AUi" secondAttribute="top" id="CnT-k2-EfP"/>
-                                                <constraint firstItem="yxw-iM-AUi" firstAttribute="leading" secondItem="WX7-H6-ZDi" secondAttribute="leading" constant="31" id="LCy-vO-Acb"/>
+                                                <constraint firstItem="yxw-iM-AUi" firstAttribute="leading" secondItem="WX7-H6-ZDi" secondAttribute="leading" constant="22" id="LCy-vO-Acb"/>
                                                 <constraint firstItem="TCM-4S-MiL" firstAttribute="leading" secondItem="yxw-iM-AUi" secondAttribute="leading" id="N7U-vD-VcA"/>
                                                 <constraint firstItem="VHZ-Ce-fnO" firstAttribute="leading" secondItem="yxw-iM-AUi" secondAttribute="trailing" constant="18" id="c4I-IF-lpQ"/>
                                                 <constraint firstItem="TCM-4S-MiL" firstAttribute="top" secondItem="yxw-iM-AUi" secondAttribute="bottom" constant="18" id="p5v-pR-sE8"/>
                                                 <constraint firstItem="TCM-4S-MiL" firstAttribute="trailing" secondItem="VHZ-Ce-fnO" secondAttribute="trailing" id="pxn-v1-1vN"/>
                                                 <constraint firstItem="yxw-iM-AUi" firstAttribute="top" secondItem="WX7-H6-ZDi" secondAttribute="top" constant="25" id="siy-r8-UAq"/>
-                                                <constraint firstAttribute="trailing" secondItem="VHZ-Ce-fnO" secondAttribute="trailing" constant="32" id="txz-EI-n7V"/>
+                                                <constraint firstAttribute="trailing" secondItem="VHZ-Ce-fnO" secondAttribute="trailing" constant="22" id="txz-EI-n7V"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
