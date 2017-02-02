@@ -12,10 +12,19 @@ import XCTest
 
 class MoviesServiceTests: XCTestCase {
 	
+	var successService: MoviesService<SuccessPaths>!
+	var errorService: MoviesService<MalformedPaths>!
+	
+	override func setUp() {
+		super.setUp()
+		
+		successService = MoviesService(paths: SuccessPaths())
+		errorService = MoviesService(paths: MalformedPaths())
+	}
+	
 	func testGetMoviesService_returnSuccessAccordingly() {
-		let service = MoviesService(paths: SuccessPaths())
 		let successCompletion = expectation(description: "Completion success")
-		service.getTopMovies() { (error, movies) in
+		successService.getTopMovies() { (error, movies) in
 			XCTAssertTrue(error == nil)
 			
 			successCompletion.fulfill()
@@ -25,16 +34,29 @@ class MoviesServiceTests: XCTestCase {
 	}
 	
 	func testGetMoviesService_returnErrorOnMalformedPaths() {
-		let service = MoviesService(paths: MalformedPaths())
 		let errorCompletion = expectation(description: "Completion error")
 		
-		service.getTopMovies() { (error, movies) in
+		errorService.getTopMovies() { (error, movies) in
 			XCTAssertFalse(error == nil)
 			
 			errorCompletion.fulfill()
 		}
 		
 		waitForExpectations(timeout: 1, handler: nil)
+	}
+	
+	
+	func testGetConfiguration_loadProperlyAConfigurationFile() {
+		let successCompletion = expectation(description: "Completion success")
+		successService.loadConfiguration() { (error, configuration) in
+			XCTAssertTrue(error == nil)
+			
+			successCompletion.fulfill()
+		}
+		
+		waitForExpectations(timeout: 1, handler: nil)
+		
+		XCTAssertNotNil(successService.configuration)
 	}
 }
 
@@ -44,6 +66,7 @@ struct SuccessPaths: PathBuilder {
 	func url(for path: MoviesPaths) -> URL {
 		switch path {
 		case .topChart: return Bundle(for: MoviesServiceTests.self).url(forResource: "movies.json", withExtension: nil)!
+		case .configuration: return Bundle(for: MoviesServiceTests.self).url(forResource: "configuration.json", withExtension: nil)!
 		}
 	}
 }
@@ -52,6 +75,7 @@ struct MalformedPaths: PathBuilder {
 	func url(for path: MoviesPaths) -> URL {
 		switch path {
 		case .topChart: return Bundle(for: MoviesServiceTests.self).url(forResource: "moviesMalformed.json", withExtension: nil)!
+		case .configuration: return Bundle(for: MoviesServiceTests.self).url(forResource: "moviesMalformed.json", withExtension: nil)!
 		}
 	}
 }

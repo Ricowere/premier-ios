@@ -12,6 +12,8 @@ final class MoviesService<Paths: PathBuilder>: CoreMoviesService where Paths.Pat
 	var paths: Paths
 	let urlSession: URLSession = URLSession(configuration: .default)
 	
+	var configuration: Configuration?
+	
 	/// Designated initializer.
 	///
 	/// - Parameter paths: Paths injected.
@@ -24,7 +26,42 @@ final class MoviesService<Paths: PathBuilder>: CoreMoviesService where Paths.Pat
 
 extension MoviesService {
 	
-	/// Unique path available at the moment. Getting the top chart movies list.
+	/// Load the API configuration for getting the images metadata.
+	///
+	/// - Parameter completion: Completion to return the expected result.
+	func loadConfiguration(with completion: @escaping (_ error: MoviesServiceError?, _ configuration: Configuration?) -> () ) {
+	
+		guard configuration == nil else {
+			completion(nil, configuration!)
+			return
+		}
+		
+		let request = URLRequest(url: paths.url(for: .configuration))
+		let task =
+			urlSession.dataTask(with: request) { [weak self] (data, response, error) in
+				guard error == nil else {
+					completion(.invalidConfiguration, nil)
+					return
+				}
+				
+				guard let data = data,
+					let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [AnyHashable: Any],
+					let images = json?["images"] as? [AnyHashable : Any],
+					let configuration = Configuration(json: images) else {
+						completion(.invalidTopMovies, nil)
+						self?.configuration = nil
+						return
+				}
+				
+				self?.configuration = configuration
+				
+				completion(nil, configuration)
+		}
+
+		task.resume()
+	}
+	
+	/// Getting the top chart movies list.
 	///
 	/// - Parameter completion: Completion to return the result from the top chart movies request.
 	func getTopMovies(with completion: @escaping (_ error: MoviesServiceError?, _ movies: [Movie]?) -> ()) {
@@ -55,6 +92,8 @@ extension MoviesService {
 /// Movies service errors.
 ///
 /// - invalidTopMovies: Default error so far when something went wrong.
+/// - invalidConfiguration: Default error for configuration
 enum MoviesServiceError {
 	case invalidTopMovies
+	case invalidConfiguration
 }

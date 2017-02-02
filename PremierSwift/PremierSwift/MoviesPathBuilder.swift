@@ -14,6 +14,7 @@ import Foundation
 /// - get: Get top movies list
 enum MoviesPaths {
 	case topChart
+	case configuration
 }
 
 /// Specialisation of PathBuilder to build Movies paths.
@@ -26,6 +27,7 @@ struct MoviesPathsBuilder: PathBuilder {
 	func url(for path: MoviesPaths) -> URL {
 		switch path {
 		case .topChart: return URL(string: "https://api.themoviedb.org/3/movie/top_rated?api_key=e4f9e61f6ffd66639d33d3dde7e3159b")!
+		case .configuration: return URL(string: "https://api.themoviedb.org/3/configuration?api_key=e4f9e61f6ffd66639d33d3dde7e3159b")!
 		}
 	}
 }
