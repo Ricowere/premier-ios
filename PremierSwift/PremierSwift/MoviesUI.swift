@@ -25,4 +25,5 @@ struct MoviePresentation {
 	
 	let title: String
 	let overview: String
+	let imageLogo: URL
 }

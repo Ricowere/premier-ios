@@ -13,21 +13,23 @@ import Foundation
 struct Movie {
 	let title : String
 	let overview: String
-	let imageLogo: URL?
+	let backdropImagePath: String
+	let images: ImagesPathsBuilder
 }
 
 extension Movie {
 	
 	/// Failable convenience init to initialize a Movie typically from a JSON representation.
-	init?(json: [AnyHashable: Any]) {
+	init?(json: [AnyHashable: Any], imagePaths: ImagesPathsBuilder) {
 		guard let name = json["title"] as? String,
-			let content = json["overview"] as? String else {
+			let content = json["overview"] as? String,
+			let backdropPath = json["poster_path"] as? String else {
 				return nil
 		}
 		
 		self.title = name
 		self.overview = content
-		
-		self.imageLogo = nil
+		self.images = imagePaths
+		self.backdropImagePath = backdropPath
 	}
 }

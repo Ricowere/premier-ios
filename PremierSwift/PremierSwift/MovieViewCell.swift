@@ -21,5 +21,23 @@ extension MoviewViewCell {
 	func set(with movie: MoviePresentation) {
 		movieTitleLabel?.text = movie.title
 		movieOverviewLabel?.text = movie.overview
+		
+		let dispatchImageWork = DispatchWorkItem {
+			do {
+				let data = try Data(contentsOf: movie.imageLogo)
+				
+				OperationQueue.main.addOperation { [weak self] in
+					self?.movieImageLogo?.image = UIImage(data: data)
+				}
+			}
+			catch {}
+		}
+		
+		DispatchQueue.global().async(execute: dispatchImageWork)
+	}
+	
+	override func prepareForReuse() {
+		super.prepareForReuse()
+		movieImageLogo?.image = nil
 	}
 }

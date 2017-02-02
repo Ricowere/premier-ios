@@ -65,25 +65,33 @@ extension MoviesService {
 	///
 	/// - Parameter completion: Completion to return the result from the top chart movies request.
 	func getTopMovies(with completion: @escaping (_ error: MoviesServiceError?, _ movies: [Movie]?) -> ()) {
-		let request = URLRequest(url: paths.url(for: .topChart))
-		let task =
-			urlSession.dataTask(with: request) { (data, response, error) in
-				guard error == nil else {
-					completion(.invalidTopMovies, nil)
-					return
-				}
-				
-				guard let data = data,
-					let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [AnyHashable: Any],
-					let movies = json?["results"] as? [[AnyHashable : Any]] else {
+		
+		loadConfiguration { (configError, configuration) in
+			guard let configuration = configuration else {
+				completion(.invalidTopMovies, nil)
+				return
+			}
+			
+			let request = URLRequest(url: self.paths.url(for: .topChart))
+			let task =
+				self.urlSession.dataTask(with: request) { (data, response, error) in
+					guard error == nil else {
 						completion(.invalidTopMovies, nil)
 						return
-				}
-				
-				completion(nil, movies.flatMap({ return Movie(json: $0) }))
+					}
+					
+					guard let data = data,
+						let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [AnyHashable: Any],
+						let movies = json?["results"] as? [[AnyHashable : Any]] else {
+							completion(.invalidTopMovies, nil)
+							return
+					}
+
+					completion(nil, movies.flatMap({ return Movie(json: $0, imagePaths: ImagesPathsBuilder(configuration: configuration)) }))
+			}
+			
+			task.resume()
 		}
-		
-		task.resume()
 	}
 }
 

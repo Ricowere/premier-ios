@@ -43,7 +43,8 @@ extension MoviesPresenter {
 			
 			let rows = movies.map {
 				return MoviePresentation(title: $0.title,
-				                         overview: $0.overview)
+				                         overview: $0.overview,
+				                         imageLogo: $0.images.url(for: .list($0.backdropImagePath)))
 			}
 			let section = ListSection(rows: rows)
 			self?.sections = [section]
