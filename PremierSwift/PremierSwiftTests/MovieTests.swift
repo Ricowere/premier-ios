@@ -15,24 +15,19 @@ class MovieTests: XCTestCase {
 	func testMovie_isSuccessfullyCreatedFromJSON() {
 		let json = ["title": "The Shawshank Redemption",
 		            "overview": "Framed in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates -- including an older prisoner named Red -- for his integrity and unquenchable sense of hope.",
-		            "backdrop_path": "/xBKGJQsAIeweesB79KC89FpBrVr.jpg"]
+		            "poster_path":"/sdhfksdjh.jpg"]
 		
-		XCTAssertNotNil(Movie(json: json))
-	}
-	
-	func testMovie_isSuccessfullyCreatedButSkippingInvalidImageURLSFromJSON() {
-		let json = ["title": "The Shawshank Redemption",
-		            "overview": "Framed in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates -- including an older prisoner named Red -- for his integrity and unquenchable sense of hope."]
+		let configuration = Configuration(json: [:])!
 		
-		guard let movie = Movie(json: json) else { fatalError() }
-		
-		XCTAssertNil(movie.imageLogo)
+		XCTAssertNotNil(Movie(json: json, imagePaths: ImagesPathsBuilder(configuration: configuration)))
 	}
 	
 	func testMovie_failCreatingItFromJSON() {
 		let json = ["title": "The Shawshank Redemption",
-		            "backdrop_path": "/xBKGJQsAIeweesB79KC89FpBrVr.jpg"]
+		            "poster_path":"/sdhfksdjh.jpg"]
 		
-		XCTAssertNil(Movie(json: json))
+		let configuration = Configuration(json: [:])!
+		
+		XCTAssertNil(Movie(json: json, imagePaths: ImagesPathsBuilder(configuration: configuration)))
 	}
 }
