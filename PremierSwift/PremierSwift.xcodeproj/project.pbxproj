@@ -22,6 +22,9 @@
 		5D65864A1E432E92006B95B4 /* MovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6586491E432E92006B95B4 /* MovieTests.swift */; };
 		5D65864C1E4333BD006B95B4 /* movies.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D65864B1E4333BD006B95B4 /* movies.json */; };
 		5D65864E1E43348B006B95B4 /* moviesMalformed.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D65864D1E43348B006B95B4 /* moviesMalformed.json */; };
+		5D6586501E433AF1006B95B4 /* MovieViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D65864F1E433AF1006B95B4 /* MovieViewCell.swift */; };
+		5D6586541E433E52006B95B4 /* Movies.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D6586531E433E52006B95B4 /* Movies.storyboard */; };
+		5D6586571E433EA7006B95B4 /* UIStoryboard+Creational.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6586561E433EA7006B95B4 /* UIStoryboard+Creational.swift */; };
 		F826A3401D9AB994003BB60E /* NSAttributedString+Premier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F826A33F1D9AB994003BB60E /* NSAttributedString+Premier.swift */; };
 		F840A5E01D945CF8009325F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F840A5DF1D945CF8009325F7 /* AppDelegate.swift */; };
 		F840A5E21D945CF8009325F7 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F840A5E11D945CF8009325F7 /* MoviesViewController.swift */; };
@@ -56,6 +59,9 @@
 		5D6586491E432E92006B95B4 /* MovieTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTests.swift; sourceTree = "<group>"; };
 		5D65864B1E4333BD006B95B4 /* movies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = movies.json; sourceTree = "<group>"; };
 		5D65864D1E43348B006B95B4 /* moviesMalformed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = moviesMalformed.json; sourceTree = "<group>"; };
+		5D65864F1E433AF1006B95B4 /* MovieViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieViewCell.swift; sourceTree = "<group>"; };
+		5D6586531E433E52006B95B4 /* Movies.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Movies.storyboard; sourceTree = "<group>"; };
+		5D6586561E433EA7006B95B4 /* UIStoryboard+Creational.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Creational.swift"; sourceTree = "<group>"; };
 		F826A33F1D9AB994003BB60E /* NSAttributedString+Premier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Premier.swift"; sourceTree = "<group>"; };
 		F840A5DC1D945CF8009325F7 /* PremierSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PremierSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F840A5DF1D945CF8009325F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,9 +124,11 @@
 		5D65862F1E432D64006B95B4 /* Movies */ = {
 			isa = PBXGroup;
 			children = (
+				5D65864F1E433AF1006B95B4 /* MovieViewCell.swift */,
 				F840A5E11D945CF8009325F7 /* MoviesViewController.swift */,
 				5D6586431E432E51006B95B4 /* MoviesUI.swift */,
 				5D6586451E432E59006B95B4 /* MoviesPresenter.swift */,
+				5D6586531E433E52006B95B4 /* Movies.storyboard */,
 			);
 			name = Movies;
 			sourceTree = "<group>";
@@ -132,6 +140,15 @@
 				5D6586371E432DC0006B95B4 /* MoviesPathBuilder.swift */,
 			);
 			name = Paths;
+			sourceTree = "<group>";
+		};
+		5D6586551E433E82006B95B4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5D6586561E433EA7006B95B4 /* UIStoryboard+Creational.swift */,
+				F826A33F1D9AB994003BB60E /* NSAttributedString+Premier.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		F840A5D31D945CF8009325F7 = {
@@ -155,12 +172,12 @@
 		F840A5DE1D945CF8009325F7 /* PremierSwift */ = {
 			isa = PBXGroup;
 			children = (
+				5D6586551E433E82006B95B4 /* Extensions */,
 				5D65862C1E432D52006B95B4 /* Dependencies */,
 				5D65862D1E432D59006B95B4 /* Core */,
 				5D65862F1E432D64006B95B4 /* Movies */,
 				5D65862E1E432D5E006B95B4 /* MVP */,
 				F840A5DF1D945CF8009325F7 /* AppDelegate.swift */,
-				F826A33F1D9AB994003BB60E /* NSAttributedString+Premier.swift */,
 				F840A5E61D945CF9009325F7 /* Assets.xcassets */,
 				F840A5E81D945CF9009325F7 /* LaunchScreen.storyboard */,
 				F840A5EB1D945CF9009325F7 /* Info.plist */,
@@ -226,7 +243,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = Deliveroo;
 				TargetAttributes = {
 					F840A5DB1D945CF8009325F7 = {
@@ -266,6 +283,7 @@
 			files = (
 				F840A5EA1D945CF9009325F7 /* LaunchScreen.storyboard in Resources */,
 				F840A5E71D945CF9009325F7 /* Assets.xcassets in Resources */,
+				5D6586541E433E52006B95B4 /* Movies.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +305,7 @@
 			files = (
 				5D6586361E432DB2006B95B4 /* PathBuilder.swift in Sources */,
 				5D6586381E432DC0006B95B4 /* MoviesPathBuilder.swift in Sources */,
+				5D6586501E433AF1006B95B4 /* MovieViewCell.swift in Sources */,
 				5D65863C1E432DEC006B95B4 /* Movie.swift in Sources */,
 				5D6586441E432E52006B95B4 /* MoviesUI.swift in Sources */,
 				5D65863A1E432DCC006B95B4 /* MoviesService.swift in Sources */,
@@ -296,6 +315,7 @@
 				5D6586311E432D87006B95B4 /* Dependencies.swift in Sources */,
 				5D6586341E432D96006B95B4 /* CoreDeclarations.swift in Sources */,
 				F840A5E21D945CF8009325F7 /* MoviesViewController.swift in Sources */,
+				5D6586571E433EA7006B95B4 /* UIStoryboard+Creational.swift in Sources */,
 				5D6586401E432E25006B95B4 /* UI.swift in Sources */,
 				F840A5E01D945CF8009325F7 /* AppDelegate.swift in Sources */,
 				F826A3401D9AB994003BB60E /* NSAttributedString+Premier.swift in Sources */,
@@ -352,6 +372,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -401,6 +422,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

@@ -27,7 +27,7 @@ extension MoviesService {
 	/// Unique path available at the moment. Getting the top chart movies list.
 	///
 	/// - Parameter completion: Completion to return the result from the top chart movies request.
-	func getTopMovies(with completion: @escaping (_ error: MoviesServiceError?, _ messages: [Movie]?) -> ()) {
+	func getTopMovies(with completion: @escaping (_ error: MoviesServiceError?, _ movies: [Movie]?) -> ()) {
 		let request = URLRequest(url: paths.url(for: .topChart))
 		let task =
 			urlSession.dataTask(with: request) { (data, response, error) in
@@ -38,12 +38,12 @@ extension MoviesService {
 				
 				guard let data = data,
 					let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [AnyHashable: Any],
-					let messages = json?["results"] as? [[AnyHashable : Any]] else {
+					let movies = json?["results"] as? [[AnyHashable : Any]] else {
 						completion(.invalidTopMovies, nil)
 						return
 				}
 				
-				completion(nil, messages.flatMap({ return Movie(json: $0) }))
+				completion(nil, movies.flatMap({ return Movie(json: $0) }))
 		}
 		
 		task.resume()
